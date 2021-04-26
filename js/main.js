@@ -3,5 +3,15 @@ window.onload = function () {
     formBtn.onclick = main;
 };
 function main() {
-    alert("Reg button was clicked");
+    validateTxtInput("first-name", "First name is required");
+    validateTxtInput("last-name", "Last name is required");
+}
+function validateTxtInput(id, errMsg) {
+    var txtBox = document.getElementById(id);
+    var textBoxValue = txtBox.value;
+    if (textBoxValue == "") {
+        var errSpan = txtBox.nextElementSibling;
+        errSpan.innerText = errMsg;
+        return false;
+    }
 }
