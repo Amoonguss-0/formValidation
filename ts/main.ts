@@ -21,8 +21,3 @@ function validateTxtInput(id:string, errMsg:string):boolean{
     }
 }
 
-function isEmailValid(email:string){
-    if(!email.includes("@")){
-        return false;
-    }
-}
