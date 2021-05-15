@@ -8,6 +8,14 @@ function main():void{
     resetErrorMessages();
     validateTxtInput("first-name", "First name is required");
     validateTxtInput("last-name", "Last name is required");
+
+    //validate date
+    let dobBox = <HTMLInputElement>document.getElementById("dob");
+    let dob = dobBox.value;
+    if(!isValidDate(dob)){
+        let errorSpan = dobBox.nextElementSibling;
+        errorSpan.innerHTML = "Format should be mm/dd/yyyy"
+    }
 }
 
 function resetErrorMessages(): void{
@@ -21,6 +29,13 @@ function resetErrorMessages(): void{
             currSpan.innerText ="";
         }
     }
+}
+
+function isValidDate(input:string):boolean{
+    //validating mm/dd/yyyy and m/d/yyyy
+    let pattern = /^\d{1,2}\/\d{1,2}\/\d{4}$/g
+
+    return pattern.test(input);
 }
 
 function validateTxtInput(id:string, errMsg:string):boolean{
