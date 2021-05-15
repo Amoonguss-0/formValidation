@@ -2,8 +2,29 @@ form span{
     color:red
 }
 
+h1{
+    text-align: center;
+}
+
 input[type = text]{
     margin-bottom: 1em;
+}
+
+button{
+    padding: .75em;
+    border-radius: .3em;
+    background-color: rgb(13, 75, 13);
+    color: rgb(162, 136, 224);
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+h1, form label, form button, form input{
+    font-family: sans-serif;
+}
+
+button:hover{
+    background-color: darkgreen;
 }
 
 form label{
