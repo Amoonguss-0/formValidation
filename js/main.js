@@ -2,14 +2,35 @@ window.onload = function () {
     var formBtn = document.querySelector("form > button");
     formBtn.onclick = main;
 };
+function changeHeading() {
+    var heading = this;
+    var red = Math.floor(Math.random() * 255 + 1);
+    var green = Math.floor(Math.random() * 255 + 1);
+    var blue = Math.floor(Math.random() * 255 + 1);
+    var color = "rgb(" + red + "," + green + "," + blue + ")";
+    heading.style.color = color;
+}
 function main() {
+    var msgHeading = document.createElement("h2");
+    msgHeading.innerText = " processing form";
+    msgHeading.innerText = "processing form";
+    msgHeading.setAttribute("class", "message");
+    msgHeading.onclick = changeHeading;
+    setTimeout(function () {
+        msgHeading.remove();
+    }, 10000);
+    var h1 = document.querySelector("h1");
+    h1.insertAdjacentElement("afterend", msgHeading);
     resetErrorMessages();
     validateTxtInput("first-name", "First name is required");
     validateTxtInput("last-name", "Last name is required");
+    dateValidation();
+}
+function dateValidation() {
     var dobBox = document.getElementById("dob");
     var dob = dobBox.value;
     if (!isValidDate(dob)) {
-        var errorSpan = dobBox.nextElementSibling;
+        var errorSpan = document.getElementById("dob-span");
         errorSpan.innerHTML = "Format should be mm/dd/yyyy";
     }
 }
